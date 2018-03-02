@@ -1,5 +1,6 @@
 package idv.carl.di.lab.spring5dilab.controllers;
 
+import idv.carl.di.lab.spring5dilab.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -8,9 +9,14 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class FakeController {
 
+    private GreetingService greetingService;
+
+    public FakeController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     public String greeting() {
-        System.out.println("Greeting.");
-        return "greeting.";
+        return greetingService.greeting();
     }
 
 }

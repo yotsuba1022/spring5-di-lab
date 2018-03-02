@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GreetingServiceImpl implements GreetingService {
 
-    public static final String DEFAULT_GREETING = "Que Pa So!!!";
+    public static final String DEFAULT_GREETING = "Que Pa So from GreetingServiceImpl!!!";
 
     @Override
     public String greeting() {
