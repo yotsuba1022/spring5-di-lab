@@ -1,5 +1,6 @@
 package idv.carl.di.lab.spring5dilab.services;
 
+import idv.carl.di.lab.spring5dilab.repositories.GreetingRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,15 @@ import org.springframework.stereotype.Service;
 @Profile({"tw", "default"})
 public class PrimaryChineseGreetingService implements GreetingService {
 
-    public static final String DEFAULT_GREETING = "安安你好 from PrimaryChineseGreetingService!!!";
+    private final GreetingRepository greetingRepository;
+
+    public PrimaryChineseGreetingService(GreetingRepository greetingRepository) {
+        this.greetingRepository = greetingRepository;
+    }
 
     @Override
     public String greeting() {
-        return DEFAULT_GREETING;
+        return greetingRepository.getChineseGreeting();
     }
 
 }
