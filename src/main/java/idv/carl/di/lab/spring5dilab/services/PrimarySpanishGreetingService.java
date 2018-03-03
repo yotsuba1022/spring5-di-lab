@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
  * @author Carl Lu
  */
 @Service
-@Profile("en")
+@Profile("es")
 @Primary
-public class PrimaryGreetingService implements GreetingService {
+public class PrimarySpanishGreetingService implements GreetingService {
 
-    public static final String DEFAULT_GREETING = "Que Paso from PrimaryGreetingService!!!";
+    public static final String DEFAULT_GREETING = "Que Paso Despacito from PrimarySpanishGreetingService!!!";
 
     @Override
     public String greeting() {
