@@ -10,12 +10,16 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class FakeController {
 
-    private GreetingService greetingService;
-    private FooComponent fooComponent;
+    private final GreetingService greetingService;
+    private final FooComponent fooComponent;
 
     public FakeController(GreetingService greetingService, FooComponent fooComponent) {
         this.greetingService = greetingService;
         this.fooComponent = fooComponent;
+    }
+
+    public void foo() {
+        fooComponent.greetingFoo();
     }
 
     public String greeting() {
