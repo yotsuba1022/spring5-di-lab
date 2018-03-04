@@ -7,8 +7,10 @@ import idv.carl.di.lab.spring5dilab.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {"idv.carl.di.lab.spring5dilab", "external.component"})
 public class Spring5DiLabApplication {
 
     public static void main(String[] args) {
