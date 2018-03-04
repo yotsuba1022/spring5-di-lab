@@ -1,0 +1,4 @@
+The ideal approach for the insurance claim example would have been to design the ClaimApprovalManager class in a way that it remains:
+
+1. Open to support more types of insurance claims.
+2. Closed for any modifications whenever support for a new type of claim is added.

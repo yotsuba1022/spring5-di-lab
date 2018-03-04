@@ -1,0 +1,8 @@
+As apparent, this is a clear violation of the Open Closed Principle.
+We need to modify the class to add support for a new functionality.
+In fact, we violated the Open Closed Principle at the very first instance
+we wrote the ClaimApprovalManager class. This may appear innocuous
+in the current example, but consider the consequences in an enterprise application
+that needs to keep pace with fast changing business demands. For each change,
+you need to modify, test, and deploy the entire application. That not only makes
+the application fragile and expensive to extend but also makes it prone to software bugs.
