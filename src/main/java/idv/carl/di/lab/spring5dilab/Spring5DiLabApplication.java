@@ -22,5 +22,8 @@ public class Spring5DiLabApplication {
         System.out.println(applicationContext.getBean(PropertyInjectedController.class).greeting());
         System.out.println(applicationContext.getBean(SetterInjectedController.class).greeting());
         System.out.println(applicationContext.getBean(ConstructorInjectedController.class).greeting());
+
+        DummyDataSource dummyDataSource = applicationContext.getBean(DummyDataSource.class);
+        System.out.println(dummyDataSource);
     }
 }
