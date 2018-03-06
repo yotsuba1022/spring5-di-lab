@@ -25,5 +25,8 @@ public class Spring5DiLabApplication {
 
         DummyDataSource dummyDataSource = applicationContext.getBean(DummyDataSource.class);
         System.out.println(dummyDataSource);
+
+        DummyJmsBroker dummyJmsBroker = applicationContext.getBean(DummyJmsBroker.class);
+        System.out.println(dummyJmsBroker);
     }
 }
