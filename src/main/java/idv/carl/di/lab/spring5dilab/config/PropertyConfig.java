@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
 
 /**
  * @author Carl Lu
@@ -13,6 +14,8 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Configuration
 @PropertySource("classpath:datasource.properties")
 public class PropertyConfig {
+
+    private final Environment env;
 
     @Value("${yahoo.user}")
     String user;
@@ -23,6 +26,10 @@ public class PropertyConfig {
     @Value("${yahoo.dburl}")
     String dbUrl;
 
+    public PropertyConfig(Environment env) {
+        this.env = env;
+    }
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
         return new PropertySourcesPlaceholderConfigurer();
@@ -32,7 +39,7 @@ public class PropertyConfig {
     public DummyDataSource dummyDataSource() {
         DummyDataSource dummyDataSource = new DummyDataSource();
         dummyDataSource.setUser(user);
-        dummyDataSource.setPassword(password);
+        dummyDataSource.setPassword(env.getProperty("ENVPASS"));
         dummyDataSource.setDbUrl(dbUrl);
 
         return dummyDataSource;
