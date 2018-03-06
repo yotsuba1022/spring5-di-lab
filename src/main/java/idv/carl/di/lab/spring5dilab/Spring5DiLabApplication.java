@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ImportResource("classpath:app-config.xml")
+@ImportResource("classpath:config/app-config.xml")
 @ComponentScan(basePackages = {"idv.carl.di.lab.spring5dilab", "external.component"})
 public class Spring5DiLabApplication {
 
