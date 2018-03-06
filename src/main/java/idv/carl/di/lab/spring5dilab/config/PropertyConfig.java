@@ -2,6 +2,7 @@ package idv.carl.di.lab.spring5dilab.config;
 
 import idv.carl.di.lab.spring5dilab.DummyDataSource;
 import idv.carl.di.lab.spring5dilab.DummyJmsBroker;
+import idv.carl.di.lab.spring5dilab.DummySource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +16,8 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 //@PropertySource({"classpath:datasource.properties", "classpath:jms.properties"})
-@PropertySources({@PropertySource("classpath:properties/datasource.properties"), @PropertySource("classpath:properties/jms.properties")})
+@PropertySources({@PropertySource("classpath:properties/datasource.properties"),
+        @PropertySource("classpath:properties/jms.properties"), @PropertySource("classpath:properties/application.properties")})
 public class PropertyConfig {
 
     private final Environment env;
@@ -37,6 +39,12 @@ public class PropertyConfig {
 
     @Value("${yahoo.jms.url}")
     String jmsUrl;
+
+    @Value("${yahoo.yca.key}")
+    String ycaKey;
+
+    @Value("${yahoo.yca.value}")
+    String ycaValue;
 
     public PropertyConfig(Environment env) {
         this.env = env;
@@ -65,6 +73,15 @@ public class PropertyConfig {
         dummyJmsBroker.setUrl(jmsUrl);
 
         return dummyJmsBroker;
+    }
+
+    @Bean
+    public DummySource dummySource() {
+        DummySource dummySource = new DummySource();
+        dummySource.setYcaKey(ycaKey);
+        dummySource.setYcaValue(ycaValue);
+
+        return dummySource;
     }
 
 }
